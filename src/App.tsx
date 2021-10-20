@@ -1,26 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { ThemeProvider } from 'styled-components'
+import useDarkMode from './hooks/useDarkMode'
+import AppRouter from './router'
+import { GlobalStyles } from './themes/GlobalStyles'
+import Themes from './themes/Themes'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    const [ theme, setDarkMode ] = useDarkMode()
+
+    return (
+        <ThemeProvider theme={Themes[theme]}>
+            <GlobalStyles />
+            <AppRouter theme={theme} setTheme={setDarkMode}/>
+        </ThemeProvider>
+    )
 }
 
-export default App;
+export default App
