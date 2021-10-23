@@ -17,7 +17,8 @@ export type AppNameProps = {
 }
 
 export type InputProps = {
-    type?: HTMLInputTypeAttribute
+    type?: HTMLInputTypeAttribute,
+    placeholder?: string,
 }
 
 export type ImageCircleProps = {

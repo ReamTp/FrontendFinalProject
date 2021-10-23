@@ -29,7 +29,7 @@ const LightTheme: DefaultTheme = {
     tertiaryColor: '#FFFFFF',
     appName: '#C9284F',
     border: '#ccc',
-    borderHover: '#444C63',
+    borderHover: '#80bdff',
     text: '#444C63',
     textHover: '#1c202b',
     title: '#FF6766',
@@ -41,7 +41,7 @@ const LightTheme: DefaultTheme = {
     successHover: '#218838',
     dangerHover: '#C82333',
     infoHover: '#138496',
-    shadowColor: 'rgba(0, 0, 0, 0.1)',
+    shadowColor: 'rgba(0, 123, 255, 0.25)',
 };
 
 const DarkTheme: DefaultTheme = {
@@ -50,7 +50,7 @@ const DarkTheme: DefaultTheme = {
     tertiaryColor: '#2A3B47',
     appName: '#FFFFFF',
     border: '#2A3B47',
-    borderHover: '#B6BCC0',
+    borderHover: '#80bdff',
     text: '#B6BCC0',
     textHover: '#FFFFFF',
     title: '#1292EE',
@@ -62,7 +62,7 @@ const DarkTheme: DefaultTheme = {
     successHover: '#3EC95D',
     dangerHover: '#AB3E48',
     infoHover: '#37638A',
-    shadowColor: 'rgba(255, 255, 255, 0.1)',
+    shadowColor: 'rgba(255, 255, 255, 0.25)',
 };
 
 const Themes = {

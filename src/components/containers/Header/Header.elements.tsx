@@ -6,6 +6,7 @@ import Container from '../../common/Containers';
 import { Link } from 'react-router-dom';
 import { SwitchContainer } from './StylesComponents/Switch.styles';
 import { ThemeHookProps } from '../../../types/global/theme';
+import Input from '../../common/Input';
 
 export const HeaderContainer = styled.div`
     display: flex;
@@ -29,7 +30,7 @@ export const Seeker = () => {
     return (
         <SeekerStyles>
             <div className="searchContent">
-                <input type="text" placeholder="Buscar..." />
+                <Input type="text" placeholder="Buscar..." />
                 <SearchBtn>
                     <BiSearchAlt />
                 </SearchBtn>

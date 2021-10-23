@@ -23,4 +23,12 @@ export const GlobalStyles = createGlobalStyle`
     li {
         list-style: none;
     }
+
+    button, input {
+        overflow: visible;
+    }
+
+    img {
+        width: 100%;
+    }
 `;

@@ -16,11 +16,21 @@ export const Button = styled.button`
     border-radius: .25rem;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, box-shadow .15s ease-in-out;
 
+    svg {
+        fill: ${(props: ButtonProps) => props.warning ? "#000": "#fff"};
+    }
+
     &:focus, &:hover {
         cursor: pointer;
         color: ${(props: ButtonProps) => props.success ? "#FFF": props.warning ? "#000" : ""};
         background-color: ${(props: ButtonProps) => props.success ? ({theme}) => theme.successHover : props.warning ? ({theme}) => theme.warningHover : props.danger ? ({theme}) => theme.dangerHover : ({theme}) => theme.infoHover};
         border-color: ${(props: ButtonProps) => props.success ? ({theme}) => theme.successHover : props.warning ? ({theme}) => theme.warningHover : props.danger ? ({theme}) => theme.dangerHover : ({theme}) => theme.infoHover};
         text-decoration: none;
+
+        svg {
+            fill: ${(props: ButtonProps) => props.warning ? "#1b1b1b":"#bdbdbd"};
+        }
     }
 `;
+
+export default Button;

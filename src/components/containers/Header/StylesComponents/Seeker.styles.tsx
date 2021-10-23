@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button } from "../../../common/Button";
+import Button from "../../../common/Button";
 
 export const SearchBtn = styled(Button)`
     color: transparent;
@@ -17,20 +17,7 @@ export const SeekerStyles = styled.div`
         display: flex;
 
         input {
-            color: ${({theme}) => theme.text};
-            background-color: ${({theme}) => theme.tertiaryColor};
-            box-sizing: border-box;
             height: 40px;
-            border: 1px solid ${({theme}) => theme.border};
-            border-radius: 0.25rem;
-            outline: 0 none;
-            padding-left: 10px;
-            font-family: 'Ubuntu', sans-serif;
-            transition: border 0.25s ease-in-out;
-
-            &:focus {
-                border: 1px solid ${({theme}) => theme.borderHover};
-            }
         }
 
         ${SearchBtn} {
