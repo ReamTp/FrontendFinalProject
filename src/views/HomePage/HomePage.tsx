@@ -7,6 +7,7 @@ const HomePage = () => {
         <>
             <BannerHP/>
             <Cards/>
+            {/*faltan 2 mas jeje*/}
         </>
     )
 }
