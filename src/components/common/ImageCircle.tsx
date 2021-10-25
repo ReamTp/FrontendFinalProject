@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { ImageCircleProps } from "../../types/components/common";
+import { ImageCircleProps, ImageCircleStyleProps } from "../../types/components/common";
 
 const ImageCircleStyle = styled.div`
-    width: 30px;
-    height: 30px;
+    width: ${(props: ImageCircleStyleProps) => props.size ? props.size : 30}px;
+    height: ${(props: ImageCircleStyleProps) => props.size ? props.size : 30}px;
     background-color: ${({theme}) => theme.text};
     border-radius: 50%;
     display: flex;
@@ -11,27 +11,34 @@ const ImageCircleStyle = styled.div`
     justify-content: center;
 
     &:hover {
-        background-color: ${({theme}) => theme.textHover}
+        background-color: ${(props: ImageCircleStyleProps) => props.noHover ? '' : ({theme}) => theme.textHover};
     }
 
     svg {
         fill: ${({theme}) => theme.primaryColor};
 
         &, image {
-            width: 1rem;
-            height: 1rem;
+            width: ${(props: ImageCircleStyleProps) => props.size ? props.size*0.53 : 30*0.53}px;
+            height: ${(props: ImageCircleStyleProps) => props.size ? props.size*0.53 : 30*0.53}px;
         }
     }
 `;
 
-const ImageCircle = ({ image }: ImageCircleProps) => {
-    console.log(typeof image)
+const ImageCircle = ({ image, size, noHover }: ImageCircleProps) => {
     const Image = image;
 
     return(
-        <ImageCircleStyle>
-            {typeof Image === 'function' ? <Image/> : typeof Image === 'string' && <img src={Image} alt='imageInCircle'/>}
-        </ImageCircleStyle>
+        <>
+            {noHover ?
+                <ImageCircleStyle noHover size={size}>
+                    {typeof Image === 'function' ? <Image/> : typeof Image === 'string' && <img src={Image} alt='imageInCircle'/>}
+                </ImageCircleStyle>
+            :
+                <ImageCircleStyle size={size}>
+                    {typeof Image === 'function' ? <Image/> : typeof Image === 'string' && <img src={Image} alt='imageInCircle'/>}
+                </ImageCircleStyle>
+            }
+        </>
     )
 }
 

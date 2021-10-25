@@ -1,15 +1,13 @@
 import React from 'react'
-import BannerHP from '../../components/containers/BannerHP'
-import Cards from '../../components/containers/CardsHP/Cards'
-import CardSection from '../../components/containers/InfoBanner/InfoBanner'
+import { BannerHP, CardsHP, InfoBannerHP, AboutHP } from '../../components/containers/HomePage'
 
 const HomePage = () => {
     return (
         <>
             <BannerHP/>
-            <Cards/>
-            <CardSection/>
-            {/*falta 1 mas jeje*/}
+            <CardsHP/>
+            <InfoBannerHP/>
+            <AboutHP/>
         </>
     )
 }

@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import Button from "../../common/Button";
-import Container from "../../common/Containers";
+import { Button, Container } from "../../../common";
 
 export const ContainerBannerHP = styled.div`
     width: 100%;

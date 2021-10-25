@@ -1,5 +1,4 @@
-import Container from '../../common/Containers';
-import AppName from '../../common/AppName';
+import { Container, AppName } from '../../common';
 import { HeaderContainer, Seeker, Switch } from './Header.elements';
 import { ThemeHookProps } from '../../../types/global/theme';
 
