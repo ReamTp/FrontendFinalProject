@@ -41,7 +41,7 @@ const LightTheme: DefaultTheme = {
     successHover: '#218838',
     dangerHover: '#C82333',
     infoHover: '#138496',
-    shadowColor: 'rgba(0, 123, 255, 0.25)',
+    shadowColor: 'rgba(30, 30, 30, 0.12)',
 };
 
 const DarkTheme: DefaultTheme = {
@@ -62,7 +62,7 @@ const DarkTheme: DefaultTheme = {
     successHover: '#3EC95D',
     dangerHover: '#AB3E48',
     infoHover: '#37638A',
-    shadowColor: 'rgba(255, 255, 255, 0.25)',
+    shadowColor: 'rgba(204, 204, 204, 0.12)',
 };
 
 const Themes = {

@@ -10,6 +10,15 @@ export type ButtonProps = {
     success?: any,
     warning?: any,
     danger?: any,
+    transparent?: any,
+    custom?: {
+        color?: string,
+        colorHover?: string,
+        background?: string,
+        backgroundHover?: string,
+        border?: string,
+        borderHover?: string,
+    }
 }
 
 export type AppNameProps = {
@@ -24,4 +33,10 @@ export type InputProps = {
 export type ImageCircleProps = {
     image: IconType | string,
     size?: number,
+    noHover?: any,
+}
+
+export type ImageCircleStyleProps = {
+    size?: number,
+    noHover?: any,
 }

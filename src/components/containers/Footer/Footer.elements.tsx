@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Container from "../../common/Containers";
+import { Container } from "../../common";
 
 export const FooterContainer = styled.div`
     height: 50px;

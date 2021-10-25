@@ -1,10 +1,8 @@
 import React from 'react'
 import { BiSearchAlt } from 'react-icons/bi'
-import Button from '../../common/Button'
-import Container from '../../common/Containers'
-import Input from '../../common/Input'
+import { Button, Container, Input } from '../../../common';
 import { ContainerBannerHP, ImageContent, InfoContent, SearchInputContent, TitleContent } from './BannerHP.elements'
-import burgerImg from '../../../resources/burgerImg.png';
+import burgerImg from '../../../../resources/burgerImg.png';
 
 const BannerHp = () => {
     return (

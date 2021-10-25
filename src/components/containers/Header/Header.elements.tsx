@@ -2,11 +2,10 @@ import styled from 'styled-components'
 import { BiSearchAlt } from 'react-icons/bi';
 import { BsCart2, BsToggleOff, BsToggleOn } from 'react-icons/bs';
 import { SearchBtn, SeekerStyles } from './StylesComponents/Seeker.styles';
-import Container from '../../common/Containers';
+import { Container, Input } from '../../common';
 import { Link } from 'react-router-dom';
 import { SwitchContainer } from './StylesComponents/Switch.styles';
 import { ThemeHookProps } from '../../../types/global/theme';
-import Input from '../../common/Input';
 
 export const HeaderContainer = styled.div`
     display: flex;
