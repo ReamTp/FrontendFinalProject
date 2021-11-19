@@ -11,9 +11,18 @@ export const GlobalStyles = createGlobalStyle`
     body {
         font-size: 16px;
         margin: 0;
-        min-height: 100vh;
+        /* min-height: 100vh; */
         background-color: ${(props) => props.theme.primaryColor};
         color: ${(props) => props.theme.text};
+
+        &::-webkit-scrollbar {
+        width: 8px;
+
+        &-thumb {
+            border-radius: 20px;
+            background-color: ${({theme}) => theme.title};
+        }
+    }
     }
 
     a {

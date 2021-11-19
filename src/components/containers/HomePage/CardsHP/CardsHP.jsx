@@ -1,9 +1,13 @@
-import React from 'react';
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+import { Link } from 'react-router-dom';
+import useModal from '../../../../hooks/useModal';
 import { Container, Button } from '../../../common';
+import Modal from '../../Modal';
 import { CardsHPContainer, ButtonContainer, CardContainer, CardInfo, CardTitleContainer, CardTSubitleContainer, Card, CardImg } from './CardsHP.elements';
 
 const CardsHP = () => {
+    const [open, isOpen, cant, addCant, removeCant] = useModal();
+
     const products = [
         {
             id: 1,
@@ -42,8 +46,8 @@ const CardsHP = () => {
             <Container>
                 <CardTitleContainer>
                     <CardTSubitleContainer>
-                        <h3>Productos mas vendidos</h3>
-                        <button>Ver más...</button>
+                        <h3>Nuestros Productos</h3>
+                        <Link to='/products'>Ver más...</Link>
                     </CardTSubitleContainer>
                     <ButtonContainer>
                         <Button transparent><AiOutlineLeft/></Button>
@@ -52,7 +56,7 @@ const CardsHP = () => {
                 </CardTitleContainer>
                 <CardContainer>
                     {products.map(product => (
-                        <Card>
+                        <Card onClick={() => isOpen()}>
                             <CardImg img={product.img}/>
                             <CardInfo>
                                 <h4>{product.title}</h4>
@@ -62,6 +66,7 @@ const CardsHP = () => {
                     ))}
                 </CardContainer>
             </Container>
+            <Modal id={1} open={open} isOpen={isOpen} cant={cant} addCant={addCant} removeCant={removeCant} />
         </CardsHPContainer>
     )
 }

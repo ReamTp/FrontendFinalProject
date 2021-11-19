@@ -46,7 +46,7 @@ export const SeekerStyles = styled.div`
         width: 30%;
         height: 100%;
 
-        a:nth-of-type(1) {
+        ${Button} {
             svg {
                 width: 25px;
                 height: 25px;
@@ -60,7 +60,7 @@ export const SeekerStyles = styled.div`
             }
         }
 
-        a:nth-of-type(2n) {
+        a {
             color: ${({theme}) => theme.warning};
             transition: color 0.15s ease-in-out;
 

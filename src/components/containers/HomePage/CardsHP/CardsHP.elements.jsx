@@ -32,7 +32,7 @@ export const CardTSubitleContainer = styled.div`
         margin-right: 15px;
     }
 
-    button{
+    a {
         color: ${({theme}) => theme.success};
         font-size: 15px;
         line-height: 50%;
@@ -59,7 +59,9 @@ export const Card = styled.div`
     text-align: center;
     transition: all 0.25s;
     background-color: ${({theme}) => theme.primaryColor};
+
     &:hover{
+        cursor: pointer;
         transform: translateY(-15px);
         box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
     }

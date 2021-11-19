@@ -1,7 +1,8 @@
-import { ChildrenType } from "../global/const";
 import { ThemeHookProps } from "../global/theme";
+import { DefaultContentProps } from "./common";
 
-export type MainLayoutProps = {
-    children: ChildrenType,
+export type MainLayoutProps = DefaultContentProps & {
     hookTheme: ThemeHookProps
 }
+
+export type ShoppingLayoutProps = DefaultContentProps & {}

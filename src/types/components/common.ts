@@ -1,6 +1,6 @@
 import { HTMLInputTypeAttribute } from "react"
 import { IconType } from "react-icons/lib"
-import { ChildrenType } from "../global/const"
+import { ChildrenType } from "../global/types"
 
 export type DefaultContentProps = {
     children: ChildrenType
@@ -23,11 +23,6 @@ export type ButtonProps = {
 
 export type AppNameProps = {
     size?: Number | any,
-}
-
-export type InputProps = {
-    type?: HTMLInputTypeAttribute,
-    placeholder?: string,
 }
 
 export type ImageCircleProps = {

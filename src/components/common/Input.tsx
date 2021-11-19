@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { InputProps } from "../../types/components/common";
 
-const InputStyle = styled.input`
+const Input = styled.input`
     display: block;
     width: 100%;
     padding: .375rem .75rem;
@@ -23,10 +22,5 @@ const InputStyle = styled.input`
     }
 `;
 
-const Input = (props: InputProps) => {
-    return (
-        <InputStyle type={props.type ? props.type : "text"} placeholder={props.placeholder ? props.placeholder : ''}/>
-    )
-}
 
 export default Input;

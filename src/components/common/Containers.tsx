@@ -7,4 +7,14 @@ const Container = styled.div`
 	padding: 0 25px;
 `;
 
+export const ViewContainer = styled.div`
+	width: 100%;
+`;
+
+export const MaxContainer = styled.div`
+    width: 100%;
+    height: 100vh;
+    display: flex;
+`;
+
 export default Container;

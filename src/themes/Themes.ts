@@ -11,6 +11,7 @@ declare module "styled-components" {
         text: string
         textHover: string
         title: string
+        titleSecondary: string
         warning: string
         success: string
         danger: string
@@ -20,19 +21,22 @@ declare module "styled-components" {
         dangerHover: string
         infoHover: string
         shadowColor: string
+        blackTransparent: string
+        yellow: string
     }
 }
 
 const LightTheme: DefaultTheme = {
     primaryColor: '#F7F8F9',
     secondaryColor: '#FFFFFF',
-    tertiaryColor: '#FFFFFF',
+    tertiaryColor: '#e6ebf1',
     appName: '#C9284F',
     border: '#ccc',
     borderHover: '#80bdff',
     text: '#444C63',
     textHover: '#1c202b',
     title: '#FF6766',
+    titleSecondary: 'rgb(255, 0, 0)',
     warning: '#FFC107',
     success: '#28A745',
     danger: '#DC3545',
@@ -42,6 +46,8 @@ const LightTheme: DefaultTheme = {
     dangerHover: '#C82333',
     infoHover: '#138496',
     shadowColor: 'rgba(30, 30, 30, 0.12)',
+    blackTransparent: 'rgba(0, 0, 0, 0.25)',
+    yellow: 'rgb(255, 227, 179)'
 };
 
 const DarkTheme: DefaultTheme = {
@@ -54,6 +60,7 @@ const DarkTheme: DefaultTheme = {
     text: '#B6BCC0',
     textHover: '#FFFFFF',
     title: '#1292EE',
+    titleSecondary: 'rgb(253, 33, 33)',
     warning: '#FFC107',
     success: '#4EE671',
     danger: '#D95561',
@@ -62,7 +69,9 @@ const DarkTheme: DefaultTheme = {
     successHover: '#3EC95D',
     dangerHover: '#AB3E48',
     infoHover: '#37638A',
-    shadowColor: 'rgba(204, 204, 204, 0.12)',
+    shadowColor: 'rgba(204, 204, 204, 0.25)',
+    blackTransparent: 'rgba(0, 0, 0, 0.5)',
+    yellow: 'rgb(255, 227, 182)'
 };
 
 const Themes = {

@@ -22,7 +22,7 @@ export const Button = styled.button`
 
     &:focus, &:hover {
         cursor: pointer;
-        color: ${(props: ButtonProps) => props.warning ? "#1b1b1b" : props.transparent ? ({theme}) => theme.textHover : props.custom?.colorHover ? props.custom.colorHover : "#bdbdbd"};
+        color: ${(props: ButtonProps) => props.warning ? "#1b1b1b" : props.transparent ? ({theme}) => theme.textHover : props.custom?.colorHover ? props.custom.colorHover : "#FFF"};
         background-color: ${(props: ButtonProps) => props.success ? ({theme}) => theme.successHover : props.warning ? ({theme}) => theme.warningHover : props.danger ? ({theme}) => theme.dangerHover : props.transparent ? 'transparent' : props.custom?.backgroundHover ? props.custom.backgroundHover : ({theme}) => theme.infoHover};
         border-color: ${(props: ButtonProps) => props.success ? ({theme}) => theme.successHover : props.warning ? ({theme}) => theme.warningHover : props.danger ? ({theme}) => theme.dangerHover : props.custom?.borderHover ? props.custom.borderHover : ({theme}) => theme.infoHover};
         text-decoration: none;
