@@ -1,4 +1,4 @@
-import { Button } from '../../../common';
+import { Button, ButtonLink } from '../../../common';
 import { BsTrash, BsPlusLg } from "react-icons/bs";
 import { SCProductContent, SCProductsContent, SCProductsHeader, ShoppingCarFooter, ShoppingCarProducts, ShoppingCarTitle } from './ShoppingCar.elements';
 import burder from '../../../../resources/burgerImg.png';
@@ -20,12 +20,9 @@ const SCProductsInfo = (props: ShoppingCarProdutcsProps) => {
                                 <p>S/.0.00</p>
                             </div>
                             <div>
-                                <Button transparent>
-                                    <BsTrash/>
-                                </Button>
                                 <input type="number" value="1" disabled/>
                                 <Button transparent>
-                                    <BsPlusLg/>
+                                    <BsTrash/>
                                 </Button>
                             </div>
                         </SCProductContent>
@@ -35,11 +32,11 @@ const SCProductsInfo = (props: ShoppingCarProdutcsProps) => {
                     <Button transparent>
                         <BsTrash/>
                     </Button>
-                    <Button success>
+                    <ButtonLink to="/buy" success>
                         <span>Ir a pagar</span>
                         <span>Sub Total:</span>
                         <span>S/.00.00</span>
-                    </Button>
+                    </ButtonLink>
                 </ShoppingCarFooter>
             </ShoppingCarProducts>
         </>

@@ -9,6 +9,8 @@ import { ThemeHookProps } from '../../../types/global/theme';
 import { ShoppingCarContainer } from './ShoppingCar/ShoppingCar.elements';
 import { SeekerProps } from '../../../types/components/containers';
 import { LateralMenuContainer } from './LateralMenu/LateralMenu.elements';
+import useAccessUser from '../../../hooks/useAccessUser';
+import { DefaultContentProps } from '../../../types/components/common';
 
 // Background
 export const BackgroundActionsHeader = styled.div`
@@ -99,7 +101,102 @@ export const HeaderContainer = styled.div`
     }
 `;
 
+const LoggedUserContent = styled.div`
+    width: 35px;
+    height: 35px;
+    position: relative;
+
+    > div {
+        display: none;
+        position: absolute;
+        width: 150px;
+        background-color: ${({theme}) => theme.primaryColor};
+        right: 0;
+        top: 40px;
+        border-radius: 5px;
+        -webkit-box-shadow: 3px 10px 20px -8px ${({theme}) => theme.shadowColor};
+        -moz-box-shadow: 3px 10px 20px -8px ${({theme}) => theme.shadowColor};
+        box-shadow: 3px 10px 20px -8px ${({theme}) => theme.shadowColor};
+
+        &:hover {
+            display: block;
+        }
+
+        > ul {
+            width: 100%;
+
+            > li {
+                width: 100%;
+                text-align: center;
+
+                &:nth-of-type(1) {
+                    padding-top: 10px;
+                }
+
+                &:nth-of-type(2n) {
+                    padding-top: 5px;
+                    padding-bottom: 5px;
+                }
+
+                > a {
+                    color: ${({theme}) => theme.text} !important;
+
+                    &:hover {
+                        color: ${({theme}) => theme.textHover} !important;
+                    }
+                }
+
+                > button {
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+        }
+    }
+`;
+
+const LoggedUserContainer = styled(Link)`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: ${({theme}) => theme.primaryColor};
+    color: ${({theme}) => theme.title} !important;
+    transition: all 0.25s ease-in-out;
+
+    &:hover {
+        transform: scale(1.1);
+
+        ~ div {
+            display: block;
+        }
+    }
+`;
+
+const LoggedUser = ({children}: DefaultContentProps) => {
+    return(
+        <LoggedUserContent>
+            <LoggedUserContainer to="/account">{children}</LoggedUserContainer>
+
+            <div>
+                <ul>
+                    <li>
+                        <Link to="/account">Mi Cuenta</Link>
+                    </li>
+                    <li>
+                        <Button transparent>Cerrar Sessión</Button>
+                    </li>
+                </ul>
+            </div>
+        </LoggedUserContent>
+    )
+}
+
 export const Seeker = (props: SeekerProps) => {
+    const [user] = useAccessUser()
+
     return (
         <SeekerStyles>
             <div className="searchContent">
@@ -113,7 +210,8 @@ export const Seeker = (props: SeekerProps) => {
                 <Button onClick={() => props.openShoppingCar()} transparent>
                     <BsCart2/>
                 </Button>
-                <Link to="/access">Ingresar</Link>
+
+                {user === null ? <Link to="/access">Ingresar</Link> : <LoggedUser>R</LoggedUser>}
             </div>
         </SeekerStyles>
     )

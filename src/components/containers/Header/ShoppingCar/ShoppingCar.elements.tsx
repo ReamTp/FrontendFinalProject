@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { ShoppingCarProdutcsProps } from "../../../../types/components/containers";
-import { Button } from "../../../common";
+import { Button, ButtonLink } from "../../../common";
 
 // Main Content
 export const ShoppingCarContainer = styled.div`
@@ -157,18 +157,18 @@ export const ShoppingCarFooter = styled(ShoppingCarInfoContainer)`
     justify-content: space-between;
 
     ${Button} {
-        box-sizing: content-box;
-        padding: 0.5rem 1.2rem;
-
-        &:nth-of-type(1) {
-            display: flex;
-            align-items: center;
-        }
+        display: flex;
+        align-items: center;
 
         svg {
             width: 1.5rem;
             height: 1.5rem;
         }
+    }
+
+    ${ButtonLink} {
+        box-sizing: content-box;
+        padding: 0.5rem 1.2rem;
 
         span {
             font-size: 0.875rem;
