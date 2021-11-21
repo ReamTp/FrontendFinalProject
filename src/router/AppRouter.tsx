@@ -1,7 +1,6 @@
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { ThemeHookProps } from '../types/global/theme';
-import LoginPage from '../views/LoginPage';
-import Page404 from '../views/Page404';
+import { LoginPage, Page404 } from '../views';
 import RouterWithNavBar from './RouterWithNavBar';
 import ShoppingRouter from './ShoppingRouter';
 

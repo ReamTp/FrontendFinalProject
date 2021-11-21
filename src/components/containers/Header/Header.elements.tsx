@@ -35,6 +35,7 @@ export const HeaderContainer = styled.div`
 
     & ~ ${ViewContainer} {
         margin-top: 80px;
+        min-height: calc(100vh - (50px + 80px));
     }
 
     ${Container} {

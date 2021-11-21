@@ -1,4 +1,3 @@
-import { HTMLInputTypeAttribute } from "react"
 import { IconType } from "react-icons/lib"
 import { ChildrenType } from "../global/types"
 

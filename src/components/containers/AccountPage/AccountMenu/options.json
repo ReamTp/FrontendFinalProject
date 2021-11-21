@@ -1,0 +1,19 @@
+{
+    "options": [
+        {
+            "id": 1,
+            "name": "Configuración",
+            "url": "config"
+        },
+        {
+            "id": 2,
+            "name": "Mis pedidos",
+            "url": "myorders"
+        },
+        {
+            "id": 3,
+            "name": "Cerrar mi cuenta",
+            "url": "close-account"
+        }
+    ]
+}
