@@ -1,9 +1,12 @@
-import { ProductsType } from "../global/objects"
+import { Product } from "../../interfaces"
 
 export type ModalProps = {
-    id: Number;
     open: Boolean;
     isOpen: () => void;
+}
+
+export type ProductModalProps = ModalProps & {
+    id: number;
     cant: number;
     addCant: () => void;
     removeCant: () => void;
@@ -20,7 +23,8 @@ export type ActionsHeaderProps = {
 
 export type ShoppingCarProdutcsProps = {
     heigth: number;
-    products?: Array<{}>;
+    products?: Product[];
+    total?: number;
 }
 
 export type ShoppingCarNoProdutcsProps = {
@@ -38,7 +42,7 @@ export type ImgBannerProductsProps = {
 
 export type PLProductProps = {
     img: string;
-    product: ProductsType;
+    product: Product;
     openModal: () => void;
 }
 
@@ -46,4 +50,16 @@ export type AccessFormsProps = {
     width: number;
     move?: boolean;
     setMove?: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export type DeliveryAddressProps = {
+    direction: string;
+}
+
+export type ProductsToPayProps = {
+    products: Array<any>;
+}
+
+export type PaymentResumeProps = {
+    totalProducts: number;
 }

@@ -6,12 +6,13 @@ import { FiPackage } from 'react-icons/fi';
 import { RiCloseLine } from 'react-icons/ri';
 import { Button } from '../../../common';
 import useElementHeight from '../../../../hooks/useElementHeight';
+import useCategory from '../../../../hooks/useCategories';
 
 const LateralMenu = (props: ActionsHeaderProps) => {
     const headerRef = useRef() as React.MutableRefObject<HTMLDivElement>;
     const footerRef = useRef() as React.MutableRefObject<HTMLDivElement>;
     const size = useElementHeight(headerRef, footerRef);
-    const [categories, setCategories] = useState([{id: 1}, {id: 2}, {id: 3}, {id: 4}, {id: 5}, {id: 6}, {id: 7}, {id: 8}, {id: 9}, {id: 10}, {id: 11}, {id: 12}]);
+    const categories = useCategory();
     const [showAll, setShowAll] = useState(false);
 
     return (
@@ -28,7 +29,7 @@ const LateralMenu = (props: ActionsHeaderProps) => {
                     <LateralMenuSubTitle>Categorias</LateralMenuSubTitle>
 
                     {categories.map((category, i) =>(i >= 9 && !showAll) ? '' : (
-                        <LateralMenuCategoryName key={category.id} to={`/products/category/${category.id}-${category}`} onClick={() => props.isOpen()}>Hamburguesas</LateralMenuCategoryName>
+                        <LateralMenuCategoryName key={category.id} to={`/products/category/${category.id}-${category.name}`} onClick={() => props.isOpen()}>{category.name}</LateralMenuCategoryName>
                     ))}
 
                     {!showAll ? (

@@ -1,0 +1,19 @@
+{
+    "genreList": [
+        {
+            "id": 1,
+            "name": "Másculino",
+            "value": "m"
+        },
+        {
+            "id": 2,
+            "name": "Femenino",
+            "value": "f"
+        },
+        {
+            "id": 3,
+            "name": "Otro",
+            "value": "o"
+        }
+    ]
+}

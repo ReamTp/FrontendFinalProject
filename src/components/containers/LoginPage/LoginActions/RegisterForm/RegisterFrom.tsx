@@ -1,53 +1,54 @@
-import React, { FormEvent, useState } from 'react'
+import { FormEvent, useContext, useState } from 'react'
 import { useHistory } from 'react-router';
+import { UserContext } from '../../../../../contexts';
+import useRegisterForm from '../../../../../hooks/useRegisterForm';
 import { AccessFormsProps } from '../../../../../types/components/containers';
 import { Button, Input } from '../../../../common';
 import { FormContainer } from '../LoginActions.elements';
 import { DoubleInput, RegisterForm, RegisterFormContent } from './RegisterForm.elements';
+import RegisterNewUser from './RegisterNewUser';
 
 const RegisterFrom = (props: AccessFormsProps) => {
     const [redirect, setRedirect] = useState(false)
     const history = useHistory();
+    const [formData, onChange] = useRegisterForm();
+    const { login } = useContext(UserContext);
 
     redirect && history.goBack();
-
-    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-    }
 
     return (
         <FormContainer className={`${props.move ? 'move' : ''} register`} width={props.width}>
             <RegisterFormContent>
                 <h1>Registrate</h1>
 
-                <RegisterForm onSubmit={(e: FormEvent<HTMLFormElement>) => onSubmit(e)}>
+                <RegisterForm onSubmit={(e: FormEvent<HTMLFormElement>) => RegisterNewUser(e, formData, setRedirect, login)}>
                     <DoubleInput>
                         <div>
-                            <label>Ingresa tus Nombres:</label>
-                            <Input id="email" name="email" type="email" placeholder="Nombres"/>
+                            <label htmlFor="name">Ingresa tus Nombres:</label>
+                            <Input id="name" name="name" type="text" placeholder="Nombres" value={formData.name} onChange={onChange}/>
                         </div>
                         <div>
-                            <label>Ingresa tus Apellidos:</label>
-                            <Input id="email" name="email" type="email" placeholder="Apellidos"/>
+                            <label htmlFor="lastName">Ingresa tus Apellidos:</label>
+                            <Input id="lastName" name="lastName" type="text" placeholder="Apellidos" value={formData.lastName} onChange={onChange}/>
                         </div>
                     </DoubleInput>
                     <div>
-                        <label>Ingresa tu correo:</label>
-                        <Input id="email" name="email" type="email" placeholder="Correo"/>
+                        <label htmlFor="email">Ingresa tu correo:</label>
+                        <Input id="email" name="email" type="email" placeholder="Correo" value={formData.email} onChange={onChange}/>
                     </div>
                     <DoubleInput>
                         <div>
-                            <label>Ingresa tu contraseña:</label>
-                            <Input id="id" name="password" type="password" placeholder="Contraseña"/>
+                            <label htmlFor="password">Ingresa tu contraseña:</label>
+                            <Input id="password" name="password" type="password" placeholder="Contraseña" value={formData.password} onChange={onChange}/>
                         </div>
                         <div>
-                            <label>Confirma tu contraseña:</label>
-                            <Input id="id" name="password" type="password" placeholder="Contraseña"/>
+                            <label htmlFor="confirmPassword">Confirma tu contraseña:</label>
+                            <Input id="confirmPassword" name="confirmPassword" type="password" placeholder="Contraseña" value={formData.confirmPassword} onChange={onChange}/>
                         </div>
                     </DoubleInput>
 
                     <div className="buttons">
-                        <Button type="submit" onClick={() => setRedirect(true)} danger>Regresar</Button>
+                        <Button type="button" onClick={() => setRedirect(true)} danger>Regresar</Button>
                         <Button type="submit" success>Registrame</Button>
                     </div>
                 </RegisterForm>

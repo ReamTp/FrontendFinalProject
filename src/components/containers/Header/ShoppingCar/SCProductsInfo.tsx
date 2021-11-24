@@ -1,10 +1,14 @@
 import { Button, ButtonLink } from '../../../common';
-import { BsTrash, BsPlusLg } from "react-icons/bs";
-import { SCProductContent, SCProductsContent, SCProductsHeader, ShoppingCarFooter, ShoppingCarProducts, ShoppingCarTitle } from './ShoppingCar.elements';
-import burder from '../../../../resources/burgerImg.png';
+import { SCProductsContent, SCProductsHeader, ShoppingCarFooter, ShoppingCarProducts, ShoppingCarTitle } from './ShoppingCar.elements';
 import { ShoppingCarProdutcsProps } from '../../../../types/components/containers';
+import SCProductItem from './SCProductItem';
+import { BsTrash } from 'react-icons/bs';
+import { useContext } from 'react';
+import { ShoppingCarContext } from '../../../../contexts';
 
 const SCProductsInfo = (props: ShoppingCarProdutcsProps) => {
+    const { removeAllShoppingCar } = useContext(ShoppingCarContext);
+
     return (
         <>
             <ShoppingCarProducts heigth={props.heigth}>
@@ -13,29 +17,17 @@ const SCProductsInfo = (props: ShoppingCarProdutcsProps) => {
                 </SCProductsHeader>
                 <SCProductsContent>
                     {props.products && props.products.map(product => (
-                        <SCProductContent>
-                            <img src={burder} alt="asd"/>
-                            <div>
-                                <p>Product Name</p>
-                                <p>S/.0.00</p>
-                            </div>
-                            <div>
-                                <input type="number" value="1" disabled/>
-                                <Button transparent>
-                                    <BsTrash/>
-                                </Button>
-                            </div>
-                        </SCProductContent>
+                        <SCProductItem product={product}/>
                     ))}
                 </SCProductsContent>
                 <ShoppingCarFooter>
-                    <Button transparent>
+                    <Button onClick={() => removeAllShoppingCar()} transparent>
                         <BsTrash/>
                     </Button>
                     <ButtonLink to="/buy" success>
                         <span>Ir a pagar</span>
                         <span>Sub Total:</span>
-                        <span>S/.00.00</span>
+                        <span>S/.{props.total}</span>
                     </ButtonLink>
                 </ShoppingCarFooter>
             </ShoppingCarProducts>

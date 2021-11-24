@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useModal = () => {
+const useProductModal = () => {
     const [open, setOpen] = useState<boolean>(false);
     const [cant, setCant] = useState<number>(1);
 
@@ -20,4 +20,4 @@ const useModal = () => {
     return [open, isOpen, cant, addCant, removeCant] as const;
 }
 
-export default useModal;
+export default useProductModal;

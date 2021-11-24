@@ -1,4 +1,5 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useRef } from 'react';
+import { ShoppingCarContext } from '../../../../contexts';
 import useElementHeight from '../../../../hooks/useElementHeight';
 import { ActionsHeaderProps } from '../../../../types/components/containers';
 import { BackgroundActionsHeader } from '../Header.elements';
@@ -9,7 +10,9 @@ import { ShoppingCarContainer, ShoppingCarHeader, ShoppingCarTitle } from './Sho
 const ShoppingCar = (props: ActionsHeaderProps) => {
     const contentRef = useRef() as React.MutableRefObject<HTMLDivElement>;
     const size = useElementHeight(contentRef);
-    const [products, setProducts] = useState([{}, {}, {}, {}, {}, {}, {}]);
+    const { shoppingCarState } = useContext(ShoppingCarContext);
+
+    const { totalPrice, products } = shoppingCarState;
 
     return (
         <>
@@ -18,7 +21,7 @@ const ShoppingCar = (props: ActionsHeaderProps) => {
                 <ShoppingCarHeader>
                     <ShoppingCarTitle>Tu Carrito</ShoppingCarTitle>
                 </ShoppingCarHeader>
-                {products.length > 0 ? <SCProductsInfo heigth={size} products={products}/> : <SCNoProductsInfo heigth={size} openShoppingCar={props.isOpen}/>}
+                {shoppingCarState.productCount > 0 && shoppingCarState.totalPrice > 0 ? <SCProductsInfo heigth={size} products={products} total={totalPrice}/> : <SCNoProductsInfo heigth={size} openShoppingCar={props.isOpen}/>}
             </ShoppingCarContainer>
         </>
     )

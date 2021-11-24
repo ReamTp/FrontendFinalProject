@@ -9,8 +9,9 @@ import { ThemeHookProps } from '../../../types/global/theme';
 import { ShoppingCarContainer } from './ShoppingCar/ShoppingCar.elements';
 import { SeekerProps } from '../../../types/components/containers';
 import { LateralMenuContainer } from './LateralMenu/LateralMenu.elements';
-import useAccessUser from '../../../hooks/useAccessUser';
 import { DefaultContentProps } from '../../../types/components/common';
+import { useContext } from 'react';
+import { UserContext } from '../../../contexts';
 
 // Background
 export const BackgroundActionsHeader = styled.div`
@@ -32,7 +33,7 @@ export const HeaderContainer = styled.div`
     height: 80px;
     box-shadow: -3px 0px 15px 0px ${({theme}) => theme.shadowColor};
     position: fixed;
-    z-index: 100000;
+    z-index: 1000;
     top: 0;
 
     & ~ ${ViewContainer} {
@@ -102,8 +103,8 @@ export const HeaderContainer = styled.div`
 `;
 
 const LoggedUserContent = styled.div`
-    width: 35px;
-    height: 35px;
+    width: 45px;
+    height: 45px;
     position: relative;
 
     > div {
@@ -112,7 +113,7 @@ const LoggedUserContent = styled.div`
         width: 150px;
         background-color: ${({theme}) => theme.primaryColor};
         right: 0;
-        top: 40px;
+        top: 45px;
         border-radius: 5px;
         -webkit-box-shadow: 3px 10px 20px -8px ${({theme}) => theme.shadowColor};
         -moz-box-shadow: 3px 10px 20px -8px ${({theme}) => theme.shadowColor};
@@ -176,6 +177,8 @@ const LoggedUserContainer = styled(Link)`
 `;
 
 const LoggedUser = ({children}: DefaultContentProps) => {
+    const { logout } = useContext(UserContext);
+
     return(
         <LoggedUserContent>
             <LoggedUserContainer to="/account">{children}</LoggedUserContainer>
@@ -186,7 +189,7 @@ const LoggedUser = ({children}: DefaultContentProps) => {
                         <Link to="/account">Mi Cuenta</Link>
                     </li>
                     <li>
-                        <Button transparent>Cerrar Sessión</Button>
+                        <Button onClick={() => logout()} transparent>Cerrar Sessión</Button>
                     </li>
                 </ul>
             </div>
@@ -195,7 +198,7 @@ const LoggedUser = ({children}: DefaultContentProps) => {
 }
 
 export const Seeker = (props: SeekerProps) => {
-    const [user] = useAccessUser()
+    const { userState } = useContext(UserContext);
 
     return (
         <SeekerStyles>
@@ -211,7 +214,7 @@ export const Seeker = (props: SeekerProps) => {
                     <BsCart2/>
                 </Button>
 
-                {user === null ? <Link to="/access">Ingresar</Link> : <LoggedUser>R</LoggedUser>}
+                {userState.token === "" ? <Link to="/access">Ingresar</Link> : <LoggedUser>{userState.abv}</LoggedUser>}
             </div>
         </SeekerStyles>
     )

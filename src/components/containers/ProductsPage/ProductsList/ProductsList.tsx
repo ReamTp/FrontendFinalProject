@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
-import useModal from '../../../../hooks/useModal';
+import useCategory from '../../../../hooks/useCategories';
+import useProductModal from '../../../../hooks/useProductModal';
 import { Container } from '../../../common'
-import Modal from '../../Modal'
+import Modal from '../../ModalProduct'
 import { PLCategoriesContainer, PLCategoriesContainerMain, PLCategoriesTitle, PLProduct, PLProductsContainer, ProductsListContainer } from './ProductsList.elements'
 
 const ProductsList = () => {
-    const [categories, setCategories] = useState([{id: 1}, {id: 2}, {id: 3}, {id: 4}, {id: 5}, {id: 6}, {id: 7}, {id: 8}, {id: 9}, {id: 10}, {id: 11}, {id: 12}]);
-    const [open, isOpen, cant, addCant, removeCant] = useModal();
+    const categories = useCategory();
+    const [open, isOpen, cant, addCant, removeCant] = useProductModal();
 
     return (
         <ProductsListContainer>
@@ -15,7 +16,7 @@ const ProductsList = () => {
                 <PLCategoriesContainerMain>
                     <PLCategoriesTitle>Categorias</PLCategoriesTitle>
                     <PLCategoriesContainer>
-                        {categories.map((category, i) => <Link key={category.id} to={`/products/category/${category.id}-${category}`}>Hamburguesas</Link>)}
+                        {categories.map((category, i) => <Link key={category.id} to={`/products/category/${category.id}-${category.name}`}>{category.name}</Link>)}
                     </PLCategoriesContainer>
                 </PLCategoriesContainerMain>
                 <PLProductsContainer>
@@ -23,7 +24,7 @@ const ProductsList = () => {
 
                     <div>
                         {categories.map(c => (
-                            <PLProduct openModal={isOpen} img="https://via.placeholder.com/200x200" product={{name: "Hola", price: 56}}/>
+                            <PLProduct openModal={isOpen} img="https://via.placeholder.com/200x200" product={{id: 1, name: "Hola", price: 56, cantidad: 1}}/>
                         ))}
                     </div>
                 </PLProductsContainer>

@@ -1,13 +1,22 @@
-import React, { FormEvent } from 'react'
+import React, { FormEvent, useContext, useState } from 'react'
 import { AiOutlineClose, AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
-import { ModalProps } from '../../../types/components/containers'
+import { ShoppingCarContext } from '../../../contexts'
+import { Product } from '../../../interfaces'
+import { ProductModalProps } from '../../../types/components/containers'
 import { Button } from '../../common'
-import { ModalBackground, ModalContainer, ModalImage, ModalInfo } from './Modal.elements'
+import { ModalBackground, ModalContainer, ModalImage, ModalInfo } from './ModalProduct.elements'
 
-const Modal = ({open, isOpen, cant, addCant, removeCant}: ModalProps) => {
+const ProductModal = ({id, open, isOpen, cant, addCant, removeCant}: ProductModalProps) => {
+    const [product, setProduct] = useState<Product>({id: id, name: "Hola", price: 56, cantidad: 1});
+    const { addProduct } = useContext(ShoppingCarContext);
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+    }
+
+    const onClick = () => {
+        isOpen();
+        addProduct({...product, cantidad: cant});
     }
 
     return (
@@ -34,11 +43,11 @@ const Modal = ({open, isOpen, cant, addCant, removeCant}: ModalProps) => {
                         </div>
                     </div>
 
-                    <Button type="submit" onClick={() => isOpen()}success>Agregar al carrito</Button>
+                    <Button type="submit" onClick={() => onClick()}success>Agregar al carrito</Button>
                 </ModalInfo>
             </ModalContainer>
         </>
     )
 }
 
-export default Modal
+export default ProductModal;

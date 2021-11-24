@@ -18,11 +18,11 @@ export const GlobalStyles = createGlobalStyle`
         &::-webkit-scrollbar {
         width: 8px;
 
-        &-thumb {
-            border-radius: 20px;
-            background-color: ${({theme}) => theme.title};
+            &-thumb {
+                border-radius: 20px;
+                background-color: ${({theme}) => theme.title};
+            }
         }
-    }
     }
 
     a {

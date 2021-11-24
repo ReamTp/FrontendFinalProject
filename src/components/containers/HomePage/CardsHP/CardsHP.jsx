@@ -1,8 +1,8 @@
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { Link } from 'react-router-dom';
-import useModal from '../../../../hooks/useModal';
+import useModal from '../../../../hooks/useProductModal';
 import { Container, Button } from '../../../common';
-import Modal from '../../Modal';
+import Modal from '../../ModalProduct';
 import { CardsHPContainer, ButtonContainer, CardContainer, CardInfo, CardTitleContainer, CardTSubitleContainer, Card, CardImg } from './CardsHP.elements';
 
 const CardsHP = () => {
