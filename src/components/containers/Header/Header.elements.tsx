@@ -1,4 +1,5 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
+import { Redirect } from 'react-router-dom';
 import { BiSearchAlt } from 'react-icons/bi';
 import { BsCart2, BsToggleOff, BsToggleOn } from 'react-icons/bs';
 import { SearchBtn, SeekerStyles } from './styles/Seeker.styles';
@@ -10,8 +11,9 @@ import { ShoppingCarContainer } from './ShoppingCar/ShoppingCar.elements';
 import { SeekerProps } from '../../../types/components/containers';
 import { LateralMenuContainer } from './LateralMenu/LateralMenu.elements';
 import { DefaultContentProps } from '../../../types/components/common';
-import { useContext } from 'react';
-import { UserContext } from '../../../contexts';
+import { FormEvent, useContext, useState } from 'react';
+import { ShoppingCarContext, UserContext } from '../../../contexts';
+import useSeeker from '../../../hooks/useSeeker';
 
 // Background
 export const BackgroundActionsHeader = styled.div`
@@ -178,6 +180,12 @@ const LoggedUserContainer = styled(Link)`
 
 const LoggedUser = ({children}: DefaultContentProps) => {
     const { logout } = useContext(UserContext);
+    const { removeAllShoppingCar } = useContext(ShoppingCarContext);
+
+    const onClickLogout = () => {
+        logout();
+        removeAllShoppingCar();
+    }
 
     return(
         <LoggedUserContent>
@@ -189,7 +197,7 @@ const LoggedUser = ({children}: DefaultContentProps) => {
                         <Link to="/account">Mi Cuenta</Link>
                     </li>
                     <li>
-                        <Button onClick={() => logout()} transparent>Cerrar Sessión</Button>
+                        <Button onClick={() => onClickLogout()} transparent>Cerrar Sessión</Button>
                     </li>
                 </ul>
             </div>
@@ -199,15 +207,24 @@ const LoggedUser = ({children}: DefaultContentProps) => {
 
 export const Seeker = (props: SeekerProps) => {
     const { userState } = useContext(UserContext);
+    const [value, setValue] = useState<string>('');
+    const [formSearch, onChangeSearch] = useSeeker();
+    const [redirect, setRedirect] = useState(false);
+
+    const onSubmit = (e: FormEvent) => {
+        e.preventDefault();
+        setValue(formSearch.search);
+        setRedirect(true);
+    }
 
     return (
         <SeekerStyles>
-            <div className="searchContent">
-                <Input type="text" placeholder="Buscar..." />
-                <SearchBtn>
+            <form className="searchContent" onSubmit={(e: FormEvent<HTMLFormElement>) => onSubmit(e)}>
+                <Input name="search" type="text" placeholder="Buscar..." value={formSearch.search} onChange={onChangeSearch} />
+                <SearchBtn type="submit">
                     <BiSearchAlt />
                 </SearchBtn>
-            </div>
+            </form>
 
             <div className="navItems">
                 <Button onClick={() => props.openShoppingCar()} transparent>
@@ -216,6 +233,7 @@ export const Seeker = (props: SeekerProps) => {
 
                 {userState.token === "" ? <Link to="/access">Ingresar</Link> : <LoggedUser>{userState.abv}</LoggedUser>}
             </div>
+            {redirect && <Redirect to={`/products/search/${value}`} />}
         </SeekerStyles>
     )
 }

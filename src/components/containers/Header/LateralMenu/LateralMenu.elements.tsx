@@ -40,7 +40,7 @@ export const LateralMenuHeader = styled.div`
         }
     }
 
-    > button {
+    > button, a {
         svg {
             width: 45px;
             height: 45px;

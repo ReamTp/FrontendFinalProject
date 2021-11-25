@@ -1,4 +1,3 @@
-import React from 'react'
 import { BsPlusLg, BsTrash } from 'react-icons/bs';
 import { Product } from '../../../../interfaces'
 import burder from '../../../../resources/burgerImg.png';

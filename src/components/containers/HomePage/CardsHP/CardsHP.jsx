@@ -56,7 +56,7 @@ const CardsHP = () => {
                 </CardTitleContainer>
                 <CardContainer>
                     {products.map(product => (
-                        <Card onClick={() => isOpen()}>
+                        <Card key={product.id} onClick={() => isOpen()}>
                             <CardImg img={product.img}/>
                             <CardInfo>
                                 <h4>{product.title}</h4>

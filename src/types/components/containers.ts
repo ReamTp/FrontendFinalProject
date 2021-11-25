@@ -44,6 +44,12 @@ export type PLProductProps = {
     img: string;
     product: Product;
     openModal: () => void;
+    setId: React.Dispatch<React.SetStateAction<number>>;
+}
+
+export type ProductsListProps = {
+    params: boolean;
+    value?: string | number;
 }
 
 export type AccessFormsProps = {

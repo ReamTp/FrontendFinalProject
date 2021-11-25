@@ -1,13 +1,14 @@
-import React, { FormEvent, useContext, useState } from 'react'
+import { FormEvent, useContext } from 'react'
 import { AiOutlineClose, AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
 import { ShoppingCarContext } from '../../../contexts'
+import useGetProduct from '../../../hooks/useGetProduct'
 import { Product } from '../../../interfaces'
 import { ProductModalProps } from '../../../types/components/containers'
 import { Button } from '../../common'
 import { ModalBackground, ModalContainer, ModalImage, ModalInfo } from './ModalProduct.elements'
 
 const ProductModal = ({id, open, isOpen, cant, addCant, removeCant}: ProductModalProps) => {
-    const [product, setProduct] = useState<Product>({id: id, name: "Hola", price: 56, cantidad: 1});
+    const product = useGetProduct(id);
     const { addProduct } = useContext(ShoppingCarContext);
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -16,7 +17,9 @@ const ProductModal = ({id, open, isOpen, cant, addCant, removeCant}: ProductModa
 
     const onClick = () => {
         isOpen();
-        addProduct({...product, cantidad: cant});
+        const newProduct: Product = {id: product.id, name: product.name, price: product.price, cantidad: cant};
+
+        addProduct(newProduct);
     }
 
     return (
@@ -28,9 +31,9 @@ const ProductModal = ({id, open, isOpen, cant, addCant, removeCant}: ProductModa
                     <img src="https://via.placeholder.com/200x200" alt="product"/>
                 </ModalImage>
                 <ModalInfo onSubmit={(e: FormEvent<HTMLFormElement>) => onSubmit(e)}>
-                    <h2>Product Name</h2>
+                    <h2>{product.name}</h2>
                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut optio nemo architecto veniam, atque ipsam ratione quaerat, neque odio aperiam iusto amet, fuga error dolorum nobis velit assumenda a! Nemo!</p>
-                    <p>$85.36</p>
+                    <p>S/ {product.price && product.price.toFixed(2).toString()}</p>
 
                     <div>
                         <label>Cantidad:</label>

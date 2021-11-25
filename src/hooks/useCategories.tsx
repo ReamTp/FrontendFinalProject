@@ -7,8 +7,6 @@ const useCategory = () => {
 
     const getData = async () => {
         const res = await categoryServices.getCities();
-
-        console.log(res);
         setCategories(res);
     }
 

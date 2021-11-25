@@ -41,7 +41,7 @@ export const TitleContent = styled.div`
     }
 `;
 
-export const SearchInputContent = styled.div`
+export const SearchInputContent = styled.form`
     width: 427px;
     height: 52px;
     margin-top: 35px;

@@ -116,12 +116,17 @@ export const PLProductContainer = styled.div`
 `;
 
 export const PLProduct = (props: PLProductProps) => {
+    const openProductModal = () => {
+        props.openModal();
+        props.setId(props.product.id);
+    }
+
     return(
-        <PLProductContainer onClick={() => props.openModal()}>
+        <PLProductContainer onClick={() => openProductModal()}>
             <img src={props.img} alt="product"/>
             <div>
                 <h5>{props.product.name}</h5>
-                <p>${props.product.price}</p>
+                <p>S/ {props.product.price.toFixed(2).toString()}</p>
             </div>
         </PLProductContainer>
     )

@@ -11,9 +11,9 @@ const AppRouter = (props: ThemeHookProps) => {
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/404" component={Page404} />
-                    <Route path="/access" component={LoginPage} />
                     <ShoppingCarProvider>
                         <Switch>
+                            <Route path="/access" component={LoginPage} />
                             <Route path="/buy" component={ShoppingRouter}/>
                             <Route path="/">
                                 <RouterWithNavBar theme={props.theme} setTheme={props.setTheme} />

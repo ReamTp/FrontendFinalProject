@@ -4,7 +4,7 @@ import { BackgroundActionsHeader } from '../Header.elements';
 import { LateralMenuCategories, LateralMenuCategoryName, LateralMenuContainer, LateralMenuFooter, LateralMenuHeader, LateralMenuSubTitle } from './LateralMenu.elements';
 import { FiPackage } from 'react-icons/fi';
 import { RiCloseLine } from 'react-icons/ri';
-import { Button } from '../../../common';
+import { Button, ButtonLink } from '../../../common';
 import useElementHeight from '../../../../hooks/useElementHeight';
 import useCategory from '../../../../hooks/useCategories';
 
@@ -20,9 +20,9 @@ const LateralMenu = (props: ActionsHeaderProps) => {
             <BackgroundActionsHeader className={`lm ${props.open && 'open'}`} onClick={() => props.isOpen()}/>
             <LateralMenuContainer className={props.open ? 'open': ''}>
                 <LateralMenuHeader ref={headerRef}>
-                    <Button transparent onClick={() => props.isOpen()}>
+                    <ButtonLink to='/' onClick={() => props.isOpen()} transparent="true">
                         <FiPackage/>
-                    </Button>
+                    </ButtonLink>
                     <RiCloseLine onClick={() => props.isOpen()}/>
                 </LateralMenuHeader>
                 <LateralMenuCategories height={size}>

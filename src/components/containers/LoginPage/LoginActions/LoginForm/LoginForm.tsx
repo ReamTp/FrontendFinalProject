@@ -25,7 +25,7 @@ const LoginForm = (props: AccessFormsProps) => {
                         <Input id="emailLogin" name="emailLogin" type="email" placeholder="Correo" value={formData.email} onChange={onChange}/>
                     </div>
                     <div>
-                        <label htmlFor="passwordLogin">Ingresa tu correo:</label>
+                        <label htmlFor="passwordLogin">Ingresa tu contraseña:</label>
                         <Input id="passwordLogin" name="passwordLogin" type="password" placeholder="Contraseña" value={formData.password} onChange={onChange}/>
                     </div>
                     <div className="buttons">
