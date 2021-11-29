@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const CardsHPContainer = styled.div`
     width: 100%;
     background-color: ${({theme}) => theme.secondaryColor};
-    height: 400px;
+    min-height: 400px;
     display: flex;
     align-items: center;
 `;
@@ -19,7 +19,7 @@ export const CardContainer = styled.div`
 export const CardTitleContainer = styled.div`
     display: flex;
     width: 100%;
-	margin: 0 auto;
+	margin: 10px auto;
     justify-content: space-between;
 `;
 

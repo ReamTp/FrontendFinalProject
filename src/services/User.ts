@@ -40,6 +40,28 @@ const userServices = {
         })
             .then(res => res.data as Response)
         return res;
+    },
+    closeAccount: async (token: string) => {
+        const urlCloseAccount = `${baseUrl}/users/close-account`;
+
+        const res = await axios.post(urlCloseAccount, {}, {
+            headers: {
+                'Authorization': token
+            }
+        }).then(res => res.data as Response)
+
+        return res;
+    },
+    changeDirection: async (token: string, direction: string) => {
+        const urlUpdateDirection = `${baseUrl}/users/update/direction`;
+
+        const res = await axios.put(urlUpdateDirection, {direction: direction}, {
+            headers: {
+                'Authorization': token
+            }
+        }).then(res => res.data as Response)
+
+        return res;
     }
 }
 

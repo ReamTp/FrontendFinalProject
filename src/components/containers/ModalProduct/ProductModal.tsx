@@ -17,7 +17,7 @@ const ProductModal = ({id, open, isOpen, cant, addCant, removeCant}: ProductModa
 
     const onClick = () => {
         isOpen();
-        const newProduct: Product = {id: product.id, name: product.name, price: product.price, cantidad: cant};
+        const newProduct: Product = {id: product.id, name: product.name, price: product.price, cantidad: cant, image: product.image};
 
         addProduct(newProduct);
     }
@@ -28,7 +28,7 @@ const ProductModal = ({id, open, isOpen, cant, addCant, removeCant}: ProductModa
             <ModalContainer className={open ? "" : "hidden"}>
                 <AiOutlineClose id="closeModal" onClick={() => isOpen()}/>
                 <ModalImage>
-                    <img src="https://via.placeholder.com/200x200" alt="product"/>
+                    <img src={product.image} alt="product"/>
                 </ModalImage>
                 <ModalInfo onSubmit={(e: FormEvent<HTMLFormElement>) => onSubmit(e)}>
                     <h2>{product.name}</h2>

@@ -1,45 +1,16 @@
-import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import useModal from '../../../../hooks/useProductModal';
-import { Container, Button } from '../../../common';
+import useProducts from "../../../../hooks/useProducts";
+import { Container } from '../../../common';
 import Modal from '../../ModalProduct';
-import { CardsHPContainer, ButtonContainer, CardContainer, CardInfo, CardTitleContainer, CardTSubitleContainer, Card, CardImg } from './CardsHP.elements';
+import { CardsHPContainer, CardContainer, CardInfo, CardTitleContainer, CardTSubitleContainer, Card, CardImg } from './CardsHP.elements';
 
 const CardsHP = () => {
     const [open, isOpen, cant, addCant, removeCant] = useModal();
 
-    const products = [
-        {
-            id: 1,
-            img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Win3x_Black_Screen_of_Death.gif/320px-Win3x_Black_Screen_of_Death.gif',
-            title: 'Карта памяти',
-            price: '1 000 ₽',
-        },
-        {
-            id: 1,
-            img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Win3x_Black_Screen_of_Death.gif/320px-Win3x_Black_Screen_of_Death.gif',
-            title: 'Карта памяти',
-            price: '1 000 ₽',
-        },
-        {
-            id: 1,
-            img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Win3x_Black_Screen_of_Death.gif/320px-Win3x_Black_Screen_of_Death.gif',
-            title: 'Карта памяти',
-            price: '1 000 ₽',
-        },
-        {
-            id: 1,
-            img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Win3x_Black_Screen_of_Death.gif/320px-Win3x_Black_Screen_of_Death.gif',
-            title: 'Карта памяти',
-            price: '1 000 ₽',
-        },
-        {
-            id: 1,
-            img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Win3x_Black_Screen_of_Death.gif/320px-Win3x_Black_Screen_of_Death.gif',
-            title: 'Карта памяти',
-            price: '1 000 ₽',
-        },
-    ]
+    const products = useProducts(0);
+
+    const limitProductsList = products.filter((product, index) => index < 5);
 
     return(
         <CardsHPContainer>
@@ -49,18 +20,18 @@ const CardsHP = () => {
                         <h3>Nuestros Productos</h3>
                         <Link to='/products'>Ver más...</Link>
                     </CardTSubitleContainer>
-                    <ButtonContainer>
+                    {/* <ButtonContainer>
                         <Button transparent><AiOutlineLeft/></Button>
                         <Button transparent><AiOutlineRight/></Button>
-                    </ButtonContainer>
+                    </ButtonContainer> */}
                 </CardTitleContainer>
                 <CardContainer>
-                    {products.map(product => (
+                    {limitProductsList.map(product => (
                         <Card key={product.id} onClick={() => isOpen()}>
-                            <CardImg img={product.img}/>
+                            <CardImg img={product.image}/>
                             <CardInfo>
-                                <h4>{product.title}</h4>
-                                <p>{product.price}</p>
+                                <h4>{product.name}</h4>
+                                <p>S/ {product.price.toFixed(2)}</p>
                             </CardInfo>
                         </Card>
                     ))}

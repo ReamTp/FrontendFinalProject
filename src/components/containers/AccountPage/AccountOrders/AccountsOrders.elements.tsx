@@ -40,6 +40,11 @@ export const OrderInfo = styled.div`
     h3 {
         font-size: 1.5rem;
         color: ${({theme}) => theme.title};
+
+        span {
+            color: ${({theme}) => theme.text};
+            font-size: 0.75rem;
+        }
     }
 
     p {

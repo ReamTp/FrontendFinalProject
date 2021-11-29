@@ -8,8 +8,8 @@ import { CategoryParamProps, ProductSearchParamProps } from '../../types/router/
 const ListPage = () => {
     const {id, name} = useParams<CategoryParamProps>();
     const {search} = useParams<ProductSearchParamProps>();
-    const [isCategory, setIsCategory] = React.useState(false);
-    const [isSearch, setIsSearch] = React.useState(false);
+    const [isCategory, setIsCategory] = React.useState<boolean>(false);
+    const [isSearch, setIsSearch] = React.useState<boolean>(false);
     const [params, setParams] = React.useState<boolean>(false);
 
     React.useEffect(() => {

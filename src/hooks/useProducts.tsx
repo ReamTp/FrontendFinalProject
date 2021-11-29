@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ProductReact } from "../interfaces";
 import { productServices } from "../services";
 
-const useProducts = (value: number | string) => {
+const useProducts = (value: number | string = 0) => {
     const [products, setProducts] = useState<ProductReact[]>([]);
 
     const getProducts = async () => {
@@ -21,7 +21,7 @@ const useProducts = (value: number | string) => {
     };
 
     useEffect(() => {
-        value === 0 ? getProducts() : typeof(value) === "number" ? getProductsByCategory(value) : getProductsBySearch(value);
+        value === 0 ? getProducts() : typeof(value) === "number" ? getProductsByCategory(value) : typeof(value) === 'string' && getProductsBySearch(value);
     }, [value])
 
     return products;

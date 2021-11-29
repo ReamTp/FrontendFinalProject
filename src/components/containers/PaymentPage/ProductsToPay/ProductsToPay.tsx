@@ -10,12 +10,12 @@ const ProductsToPay = ({products}: ProductsToPayProps) => {
                 {products.map(product => (
                     <ProductToPayContent>
                         <ProductToPayInfo>
-                            <p>1u</p>
-                            <img src="" alt="img"/>
-                            <h4>Product 1 as</h4>
+                            <p>{product.cantidad}c/u</p>
+                            <img src={product.image} alt="img"/>
+                            <h4>{product.name}</h4>
                         </ProductToPayInfo>
 
-                        <ProductToPayPrice>$0.00</ProductToPayPrice>
+                        <ProductToPayPrice>S/ {product.price.toFixed(2)} c/u</ProductToPayPrice>
                     </ProductToPayContent>
                 ))}
             </ProductsContent>

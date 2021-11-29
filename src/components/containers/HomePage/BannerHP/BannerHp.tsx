@@ -39,7 +39,7 @@ const BannerHp = () => {
                     <img src={burgerImg} alt="BurgerImage"/>
                 </ImageContent>
             </Container>
-            {redirect && <Redirect to={`/products/search/${value}`} />}
+            {redirect && value !== '' && <Redirect to={`/products/search/${value}`} />}
         </ContainerBannerHP>
     )
 }

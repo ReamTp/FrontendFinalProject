@@ -207,14 +207,20 @@ const LoggedUser = ({children}: DefaultContentProps) => {
 
 export const Seeker = (props: SeekerProps) => {
     const { userState } = useContext(UserContext);
+    const { shoppingCarState } = useContext(ShoppingCarContext);
     const [value, setValue] = useState<string>('');
-    const [formSearch, onChangeSearch] = useSeeker();
-    const [redirect, setRedirect] = useState(false);
+    const [formSearch, onChangeSearch, resetSearch] = useSeeker();
+    const [redirect, setRedirect] = useState<boolean>(false);
 
     const onSubmit = (e: FormEvent) => {
         e.preventDefault();
         setValue(formSearch.search);
         setRedirect(true);
+
+        setTimeout(() => {
+            resetSearch();
+            setRedirect(false);
+        }, 50);
     }
 
     return (
@@ -228,7 +234,12 @@ export const Seeker = (props: SeekerProps) => {
 
             <div className="navItems">
                 <Button onClick={() => props.openShoppingCar()} transparent>
-                    <BsCart2/>
+                    <div>
+                        <BsCart2/>
+                        <div className={shoppingCarState.productCount < 1 ? 'active' : ''}>
+                            {shoppingCarState.productCount}
+                        </div>
+                    </div>
                 </Button>
 
                 {userState.token === "" ? <Link to="/access">Ingresar</Link> : <LoggedUser>{userState.abv}</LoggedUser>}

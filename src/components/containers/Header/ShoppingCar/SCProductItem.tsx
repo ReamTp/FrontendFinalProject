@@ -1,10 +1,9 @@
 import { BsPlusLg, BsTrash } from 'react-icons/bs';
-import { Product } from '../../../../interfaces'
-import burder from '../../../../resources/burgerImg.png';
+import { Product } from '../../../../interfaces';
 import { useContext } from 'react';
 import { ShoppingCarContext } from '../../../../contexts';
 import { Button } from '../../../common';
-import { SCProductContent } from './ShoppingCar.elements'
+import { SCProductContent } from './ShoppingCar.elements';
 
 type props = {
     product: Product
@@ -15,7 +14,7 @@ const SCProductItem = ({product}: props) => {
 
     return (
         <SCProductContent key={product.id}>
-            <img src={burder} alt="asd"/>
+            <img src={product.image} alt="asd"/>
             <div>
                 <p>{product.name}</p>
                 <p>S/.{product.price}</p>

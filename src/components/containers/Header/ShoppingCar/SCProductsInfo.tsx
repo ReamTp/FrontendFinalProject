@@ -17,14 +17,14 @@ const SCProductsInfo = (props: ShoppingCarProdutcsProps) => {
                 </SCProductsHeader>
                 <SCProductsContent>
                     {props.products && props.products.map(product => (
-                        <SCProductItem product={product}/>
+                        <SCProductItem key={product.id} product={product}/>
                     ))}
                 </SCProductsContent>
                 <ShoppingCarFooter>
                     <Button onClick={() => removeAllShoppingCar()} transparent>
                         <BsTrash/>
                     </Button>
-                    <ButtonLink to="/buy" success>
+                    <ButtonLink to="/buy" success="true">
                         <span>Ir a pagar</span>
                         <span>Sub Total:</span>
                         <span>S/.{props.total}</span>

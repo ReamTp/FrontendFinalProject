@@ -20,6 +20,8 @@ const ProductsList = (props: ProductsListProps) => {
         props.params && props.value && typeof(props.value) === "number" ? setCategoryId(props.value) : props.params && props.value && typeof(props.value) === "string" ? setSearch(props.value) : setCategoryId(0);
     }, [props.value, props.params])
 
+    useEffect(() => console.log("Products:",products), [products]);
+
     return (
         <ProductsListContainer>
             <Container>
@@ -35,7 +37,7 @@ const ProductsList = (props: ProductsListProps) => {
 
                     <div>
                         {products.map(product => (
-                            <PLProduct key={product.id} openModal={isOpen} img="https://via.placeholder.com/200x200" product={{id: product.id, name: product.name, price: product.price, cantidad: 1}} setId={setId}/>
+                            <PLProduct key={product.id} openModal={isOpen} img={product.image} product={{id: product.id, name: product.name, price: product.price, cantidad: 1, image: product.image}} setId={setId}/>
                         ))}
                     </div>
                 </PLProductsContainer>

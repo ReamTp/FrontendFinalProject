@@ -47,17 +47,42 @@ export const SeekerStyles = styled.div`
         height: 100%;
 
         ${Button} {
-            svg {
-                width: 25px;
-                height: 25px;
-                fill: ${({theme}) => theme.text};
+            > div {
+                position: relative;
 
-                transition: fill 0.15s ease-in-out;
+                svg {
+                    width: 25px;
+                    height: 25px;
+                    fill: ${({theme}) => theme.text};
+                    transition: fill 0.15s ease-in-out;
 
-                &:hover {
-                    fill: ${({theme}) => theme.textHover};
+                    &:hover {
+                        fill: ${({theme}) => theme.textHover};
+                    }
+
+                }
+
+                > div {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 20px;
+                    height: 20px;
+                    font-size: 0.8rem;
+                    border-radius: 50%;
+                    background-color: ${({theme}) => theme.info};
+                    color: white;
+                    position: absolute;
+                    right: -10px;
+                    bottom: -5px;
+
+                    &.active {
+                        display: none;
+                    }
                 }
             }
+
+
         }
 
         a {

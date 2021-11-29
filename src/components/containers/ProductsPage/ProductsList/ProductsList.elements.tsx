@@ -75,7 +75,6 @@ export const PLProductsContainer = styled.div`
     div {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
     }
 `;
 
@@ -87,6 +86,15 @@ export const PLProductContainer = styled.div`
     transition: all 0.4s ease;
     margin-bottom: 15px;
     padding: 12px;
+    margin: 10px 7px;
+
+    &:nth-of-type(1n) {
+        margin-left: 0;
+    }
+
+    &:nth-of-type(2n + 4) {
+        margin-right: 0px;
+    }
 
     img {
         width: 100%;

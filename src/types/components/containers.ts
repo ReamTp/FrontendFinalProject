@@ -1,4 +1,4 @@
-import { Product } from "../../interfaces"
+import { Product, ProductBallot } from "../../interfaces"
 
 export type ModalProps = {
     open: Boolean;
@@ -63,9 +63,17 @@ export type DeliveryAddressProps = {
 }
 
 export type ProductsToPayProps = {
-    products: Array<any>;
+    products: Product[];
 }
 
 export type PaymentResumeProps = {
     totalProducts: number;
+    total: number;
+    setTotal: React.Dispatch<React.SetStateAction<number>>;
+}
+
+export type PaymentObjectProps = {
+    date: string;
+    total: number;
+    products: ProductBallot[];
 }

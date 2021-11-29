@@ -9,7 +9,7 @@ type ShoppingCarAction =
 const ShoppingCarReducer = (state: ShoppingCar, action: ShoppingCarAction) : ShoppingCar => {
     switch (action.type) {
         case "addProduct":
-            state.productCount++;
+            state.productCount = state.productCount + action.product.cantidad;
             let found = false;
 
             const object = state.products.map(({...product}) => {
@@ -35,7 +35,6 @@ const ShoppingCarReducer = (state: ShoppingCar, action: ShoppingCarAction) : Sho
         case "removeProduct":
             let removedCant = 0;
             let removedPrice = 0;
-            state.productCount > 0 && state.productCount--;
 
             const removeState = {
                 ...state,
@@ -43,6 +42,7 @@ const ShoppingCarReducer = (state: ShoppingCar, action: ShoppingCarAction) : Sho
                     if (product.id === action.product.id) {
                         removedCant = product.cantidad;
                         removedPrice = product.price;
+                        state.productCount = state.productCount > 0 ? state.productCount - product.cantidad : 0;
                     }
 
                     return product.id !== action.product.id
@@ -54,11 +54,15 @@ const ShoppingCarReducer = (state: ShoppingCar, action: ShoppingCarAction) : Sho
 
             return removeState;
         case "removeAll":
-            return {
+            const removedAll = {
                 productCount: 0,
                 products: [],
                 totalPrice: 0
             }
+
+            localStorage.setItem('productsList', JSON.stringify(removedAll.products));
+
+            return removedAll;
         case 'toggleProduct':
             let price = 0;
 
@@ -68,7 +72,6 @@ const ShoppingCarReducer = (state: ShoppingCar, action: ShoppingCarAction) : Sho
                     if ((product.id === action.product.id) && (product.cantidad < 50)) {
                         product.cantidad++;
                         price = product.price;
-                        console.log(product);
                     }
 
                     return product;

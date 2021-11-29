@@ -5,6 +5,7 @@ export default interface Product {
     name: string;
     price: number;
     cantidad: number;
+    image: string;
 }
 
 
@@ -15,4 +16,10 @@ export interface ProductReact {
     price: number;
     category: Category;
     state: boolean;
+    image: string;
+}
+
+export interface ProductBallot {
+    id: number;
+    quantity: number;
 }
